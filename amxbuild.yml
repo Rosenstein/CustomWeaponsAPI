@@ -1,0 +1,21 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/AmxxModularEcosystem/amxx-builder/master/schema/amxbuild.schema.json
+
+name: CustomWeaponsAPI
+
+amxmodx:
+  version: "1.10.5428"
+
+deps:
+  - AmxxModularEcosystem/ParamsController@1.4.2
+  - repo: rehlds/ReAPI
+    ref: 5.29.0.358
+    source: release
+    include_path: addons/amxmodx/scripting/include
+
+plugins:
+  - match: CWAPI-A-Test.sma
+    enabled: false
+
+deploy:
+  exclude:
+    - addons/amxmodx/configs/

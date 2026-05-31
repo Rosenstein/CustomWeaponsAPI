@@ -1,3 +1,7 @@
 *.amxx
 *.zip
-.build
+.env
+.amxb-cache
+.claude
+build
+dist
