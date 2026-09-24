@@ -459,13 +459,18 @@ static CWeapons__ReadSounds(const JSON:weaponJson, WeaponData[S_CustomWeapon]) {
 CWeapons_LoadFromFolder(const path[]) {
     Dbg_Log("CWeapons_LoadFromFolder('%s'): Call func.", path);
 
+    if (!dir_exists(path)) {
+        log_amx("[ERROR] Weapons folder '%s' not found. Custom weapons loading skipped.", path);
+        return;
+    }
+
     static pathNonConst[PLATFORM_MAX_PATH];
     copy(pathNonConst, charsmax(pathNonConst), path);
 
     new sFile[PLATFORM_MAX_PATH], iDirHandler, FileType:iType;
     iDirHandler = open_dir(pathNonConst, sFile, charsmax(sFile), iType);
     if (!iDirHandler) {
-        abort(AMX_ERR_PARAMS, "[ERROR] Can't open folder '%s'.", path);
+        log_amx("[ERROR] Can't open folder '%s'. Custom weapons loading skipped.", path);
         return;
     }
     
